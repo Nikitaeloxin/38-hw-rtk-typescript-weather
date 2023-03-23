@@ -1,17 +1,14 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import weather from '../features/slices/weatherSlice'
+import message from '../features/slices/messageSlice'
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+import {configureStore} from "@reduxjs/toolkit";
 
-export type AppDispatch = typeof store.dispatch;
+export const store =configureStore({
+    reducer:{
+        weather, message
+    }
+})
+
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppDispatch = typeof store.dispatch
+
